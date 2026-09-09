@@ -1,0 +1,15 @@
+{
+  "name": "Surf",
+  "tag": "Coastal cruiser",
+  "lede": "Translates true surf style into a distinct riding experience \u2014 the fluidity and low-slung dynamism of a board carving a wave.",
+  "body": "Surf translates true surf style into a distinct riding experience. The design captures the fluidity and low-slung dynamism of a board carving a wave, providing an adventure-ready stance perfect for coastal exploration or city commuting. This machine is built to project chill confidence and individuality on every run. Featuring a low-maintenance design and a focus on essential simplicity, Surf lets you minimise downtime and maximise your time chasing the ultimate ride.",
+  "spec_range": "100 km",
+  "spec_topspeed": "70 km/h",
+  "spec_charge": "5 hrs",
+  "spec_weight": "190 kg",
+  "detail_intro": "Surf is designed with a surfing-inspired style, capturing the fluidity and dynamic motion of the ocean \u2014 a bold and adventurous look that stands out and evokes a sense of freedom and thrill, with an individuality all its own.",
+  "motor": "High-performance electric motors designed to deliver superior efficiency and power output, using advanced technologies and materials to meet the demands of modern energy systems while reducing environmental impact.",
+  "battery": "A lithium battery with impressive energy storage, paired with a Battery Management System that constantly monitors voltage, current, and temperature to keep everything running safely.",
+  "controller": "An advanced electronic device that precisely manages complex systems using sophisticated algorithms, sensors, and real-time data monitoring, enhancing reliability and user control.",
+  "charger": "An intelligent charger that quickly and safely recharges batteries using adaptive algorithms, temperature control, and real-time monitoring, ideal for electric vehicles and renewable energy systems."
+}

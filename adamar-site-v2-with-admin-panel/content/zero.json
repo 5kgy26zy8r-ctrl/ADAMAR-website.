@@ -1,0 +1,15 @@
+{
+  "name": "Zero",
+  "tag": "Minimalist",
+  "lede": "The ultimate urban commuter and city slicker \u2014 zero tailpipe emissions, and a lightweight frame built for the road ahead.",
+  "body": "Zero is the ultimate urban commuter and city slicker. With zero tailpipe emissions, you're choosing more than just a cleaner ride. Zero incorporates a lightweight frame built with our unique material, plus ABS braking for ultimate stopping safety. Zero's advanced battery system means greater capacity battery options for longer distances, and an automatic eject when it comes to charging. Zero represents a commitment to the road ahead, offering a high-quality machine that matches your riding needs and forward-thinking values.",
+  "spec_range": "90 km",
+  "spec_topspeed": "75 km/h",
+  "spec_charge": "5 hrs",
+  "spec_weight": "175 kg",
+  "detail_intro": "Step into the future of transportation with Zero \u2014 a state-of-the-art electric motorbike where bold design meets groundbreaking technology, giving you a ride with unparalleled style and sustainability, comfortable and confident.",
+  "motor": "High-performance electric motor delivering instant torque and smooth acceleration \u2014 compact, efficient, and brushless, ensuring low maintenance and maximum efficiency for fast, eco-friendly commuting.",
+  "battery": "A lithium battery with high energy density, perfect for electric vehicles \u2014 paired with a Battery Management System that constantly monitors voltage, current, and temperature to keep everything running safely.",
+  "controller": "An advanced electronic device that precisely manages complex systems using sophisticated algorithms, sensors, and real-time data monitoring \u2014 enhancing reliability, efficiency, and user control in dynamic environments.",
+  "charger": "An intelligent charger that quickly and safely recharges batteries using adaptive algorithms, temperature control, and real-time monitoring \u2014 extending battery life and preventing overcharging."
+}

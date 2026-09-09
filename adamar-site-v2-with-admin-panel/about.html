@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Adamar | Electric Motorcycles, Designed in New Zealand</title>
+<meta name="description" content="The story behind Adamar — electric motorcycles designed and hand-built in New Zealand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@600;700;800&family=Archivo:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>window.CMS_CONTENT_FILE = 'content/about.json';</script>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a href="index.html" class="wordmark" aria-label="Adamar home">ADAMAR</a>
+    <nav class="main-nav" id="main-nav">
+      <div class="nav-dropdown" id="models-dropdown">
+      <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Models</button>
+      <div class="dropdown-menu">
+        <a href="hunter.html">Hunter</a>
+        <a href="highway.html">Highway</a>
+        <a href="zero.html">Zero</a>
+        <a href="urban.html">Urban</a>
+        <a href="max.html">Max</a>
+        <a href="classic.html">Classic</a>
+        <a href="surf.html">Surf</a>
+        <a href="index.html#models" class="dropdown-viewall">View all &rarr;</a>
+      </div>
+    </div>
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="technology.html">Technology</a>
+      <a href="faq.html">FAQ</a>
+      <a href="blog.html">News</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="about-hero">
+  <div class="hero-media">
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/detail-poster.jpg">
+      <source src="assets/detail-loop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-scrim"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <p class="hero-kicker reveal" style="--d:0s" data-cms="hero_kicker">About Adamar</p>
+    <h1 class="hero-title reveal" style="--d:0.15s" data-cms="hero_heading" data-cms-html>Designed on New Zealand roads,<br>not in a boardroom.</h1>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-inner">
+    <div class="about-copy">
+      <p class="hero-kicker" data-cms="story_kicker">Our story</p>
+      <h2 data-cms="story_heading">We think different</h2>
+      <p data-cms="story_body1">Welcome to Adamar Electric Motorcycles, where cutting-edge innovation seamlessly intertwines with a commitment to sustainability. Our dedication to quality is evident in our meticulous manufacturing processes and the handcrafted assembly of each motorcycle. Every bike we produce is a testament to our unwavering focus on performance and environmental responsibility.</p>
+      <p data-cms="story_body2">Our strategic partnerships with businesses around the globe enable us to broaden our horizons while remaining steadfast in our core principles. These collaborations enhance our ability to deliver exceptional electric motorcycles that resonate with riders who value both style and substance. We embrace the philosophy that simplicity can lead to sophistication, merging modern design with practical functionality.</p>
+      <p data-cms="story_body3">We invite you to embark on an exhilarating journey with us as we pave the way toward a more sustainable future. Our electric motorcycles are not just vehicles; they represent a lifestyle choice that prioritizes eco-friendliness without compromising on performance or aesthetics. Join us in redefining the riding experience, one ride at a time.</p>
+    </div>
+    <div class="about-stat">
+      <span class="stat-number" style="font-size:2.2rem;" data-cms="tagline">"We Think Different…"</span>
+      <span class="stat-label" data-cms="tagline_sub">Handcrafted electric motorcycles, built on a commitment to sustainability and performance.</span>
+    </div>
+  </div>
+</section>
+
+<section class="specs">
+  <div class="wrap">
+    <p class="hero-kicker">How we got here</p>
+    <h2 style="margin-bottom:48px;">The Adamar timeline</h2>
+    <div class="timeline scroll-reveal-stagger">
+      <div class="timeline-item">
+        <span class="timeline-year">Concept</span>
+        <p style="margin:0;">Adamar International begins as a design studio, working on vehicle concepts across several categories.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">Platform</span>
+        <p style="margin:0;">Development starts on a single shared electric drivetrain platform, built to be tuned for very different kinds of riding.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">EGO Urban</span>
+        <p style="margin:0;">The first model reveal — a compact, city-focused electric moped, shown in full CGI detail before physical prototypes.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">The range</span>
+        <p style="margin:0;">Hunter, Highway, Zero, Urban, Max, Classic, and Surf take shape as seven distinct expressions of the same platform.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">Today</span>
+        <p style="margin:0;">Adamar continues building and refining every model in New Zealand, for New Zealand roads first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="model-cta">
+  <div class="wrap">
+    <h2>See the range for yourself</h2>
+    <p>Seven models, one platform — find the one built for how you ride.</p>
+    <a href="index.html#models" class="btn btn-primary">Explore models</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a href="index.html" class="wordmark small">ADAMAR</a>
+    <p>&copy; <span id="year"></span> Adamar International. Electric motorcycles, built in New Zealand.</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="content-loader.js"></script>
+</body>
+</html>

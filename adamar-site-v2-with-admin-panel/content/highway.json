@@ -1,0 +1,15 @@
+{
+  "name": "Highway",
+  "tag": "Long-range touring",
+  "lede": "Engineered for sustained mileage and superior rider comfort, with a classic low-slung cruiser stance built for the long haul.",
+  "body": "Highway is engineered for sustained mileage and superior rider comfort. Its classic, low-slung cruiser stance provides optimal ergonomics for long-haul journeys, backed by reliable, powerful performance. The 'Highway' designation means this machine is built for smoothness and stamina, delivering the sustained power needed to eat up the miles with ease.",
+  "spec_range": "220 km",
+  "spec_topspeed": "120 km/h",
+  "spec_charge": "8 hrs",
+  "spec_weight": "235 kg",
+  "detail_intro": "The Highway is a statement of freedom, defined by its commanding cruiser aesthetic and built entirely for the open road. With the option to carry two additional batteries on board, range anxiety becomes a thing of the past. Highway is your invitation to chase the never-ending horizon.",
+  "motor": "Groundbreaking materials and brilliant engineering unleash astonishing power while dramatically cutting energy consumption \u2014 essential for minimising environmental impact and driving the machinery of the future forward.",
+  "battery": "A lithium battery with exceptional energy storage, paired with a Battery Management System that continuously monitors voltage, current, and temperature \u2014 preventing overcharging and thermal issues while enhancing performance and longevity.",
+  "controller": "A sophisticated electronic device overseeing complex systems through advanced algorithms, sensors, and real-time data monitoring \u2014 ensuring optimal performance, safety, and adaptability across electric and smart systems.",
+  "charger": "An advanced charger that recharges batteries efficiently and safely through adaptive algorithms, temperature regulation, and real-time monitoring \u2014 extending battery lifespan and reducing the risk of overcharging."
+}

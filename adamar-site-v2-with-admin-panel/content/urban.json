@@ -1,0 +1,15 @@
+{
+  "name": "Urban",
+  "tag": "City commuter",
+  "lede": "A high-performance brushless motor delivers instant, effortless torque and seamless acceleration, with up to 150 km of range on a single charge.",
+  "body": "Our electric machines are designed to redefine your journey. Built with a high-performance, brushless motor, Urban delivers instant, effortless torque and perfectly seamless acceleration. Paired with long-lasting lithium-ion power, you can confidently explore an extended range of up to 150 km on a single charge. Whether navigating city streets or embarking on an unexpected adventure, the bike's aerodynamic frame, sophisticated safety systems, and smart connectivity all work in harmony to enhance your ride and ensure unparalleled peace of mind.",
+  "spec_range": "150 km",
+  "spec_topspeed": "65 km/h",
+  "spec_charge": "4.5 hrs",
+  "spec_weight": "165 kg",
+  "detail_intro": "Engineered for the discerning rider, Urban utilises a high-performance brushless motor to provide immediate, predictable torque and fluid acceleration. The long-life lithium-ion battery system ensures dependable power delivery across an impressive maximum range of 150 km.",
+  "motor": "State-of-the-art electric motors engineered with advanced technology for exceptional efficiency, reliability, and durability \u2014 ensuring seamless, optimal performance across daily commutes and extended runs.",
+  "battery": "Advanced battery technology designed to deliver optimal performance and longevity, using high-quality materials and innovative engineering to enhance energy density and reduce charging times.",
+  "controller": "The High-Tec Controller enhances operational efficiency with precise control and monitoring, integrating seamlessly with existing systems for compatibility and ease of use.",
+  "charger": "The Advanced Technology Charger combines efficiency with innovation, ensuring your Urban is powered quickly and safely, with state-of-the-art reliability and performance."
+}

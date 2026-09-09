@@ -1,0 +1,15 @@
+{
+  "name": "Classic",
+  "tag": "Retro-styled",
+  "lede": "Our original masterpiece \u2014 a breathtaking ride that perfectly fuses timeless elegance with modern craftsmanship.",
+  "body": "The Classic is our original masterpiece \u2014 a breathtaking ride that perfectly fuses timeless elegance with modern craftsmanship. Every model fuses bold aesthetics with raw, instantaneous performance, delivering exhilarating speed, torque, and rock-solid reliability. The result is a stunning, stylish ride that demands attention and is the true embodiment of sophistication.",
+  "spec_range": "110 km",
+  "spec_topspeed": "85 km/h",
+  "spec_charge": "6 hrs",
+  "spec_weight": "200 kg",
+  "detail_intro": "The EGO Classic stands on the foundation of our initial design commitment: creating enduring quality. Our team has continually enhanced this signature model, ensuring it remains an iconic benchmark for timeless style and robust construction.",
+  "motor": "Our own designed high-performance electric motor delivers instant torque and smooth acceleration like no other \u2014 compact, efficient, brushless, and built for fast, eco-friendly commuting, cruising, or adventure seeking.",
+  "battery": "A lithium battery with impressive energy storage, paired with a Battery Management System that constantly monitors voltage, current, and temperature \u2014 preventing overcharging and boosting performance and longevity.",
+  "controller": "An advanced electronic device that precisely manages complex systems using sophisticated algorithms, sensors, and real-time monitoring, with app connectivity and adaptive capabilities.",
+  "charger": "An intelligent charger that quickly and safely recharges batteries using adaptive algorithms, temperature control, and real-time monitoring \u2014 extending battery life and enabling remote management."
+}

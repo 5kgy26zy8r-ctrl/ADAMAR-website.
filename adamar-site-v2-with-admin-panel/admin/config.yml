@@ -1,0 +1,93 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets"
+public_folder: "assets"
+
+publish_mode: simple
+
+collections:
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - file: "content/home.json"
+        label: "Homepage content"
+        name: "home"
+        fields:
+          - { label: "Hero — small kicker text", name: "hero_kicker", widget: "string" }
+          - { label: "Hero — headline, line 1", name: "hero_title_line1", widget: "string" }
+          - { label: "Hero — headline, line 2", name: "hero_title_line2", widget: "string" }
+          - { label: "Hero — subtext", name: "hero_lede", widget: "text" }
+          - { label: "Models section — heading", name: "models_heading", widget: "string" }
+          - { label: "Models section — subheading", name: "models_subheading", widget: "text" }
+          - { label: "About preview — kicker", name: "about_kicker", widget: "string" }
+          - { label: "About preview — heading", name: "about_heading", widget: "string" }
+          - { label: "About preview — paragraph 1", name: "about_body1", widget: "text" }
+          - { label: "About preview — paragraph 2", name: "about_body2", widget: "text" }
+          - { label: "About preview — tagline", name: "about_tagline", widget: "string" }
+          - { label: "About preview — tagline subtext", name: "about_tagline_sub", widget: "text" }
+          - { label: "Contact — heading", name: "contact_heading", widget: "string" }
+          - { label: "Contact — subtext", name: "contact_body", widget: "text" }
+
+  - name: "about_page"
+    label: "About Page"
+    files:
+      - file: "content/about.json"
+        label: "About page content"
+        name: "about"
+        fields:
+          - { label: "Hero — kicker", name: "hero_kicker", widget: "string" }
+          - { label: "Hero — heading (HTML, <br> allowed)", name: "hero_heading", widget: "string" }
+          - { label: "Story — kicker", name: "story_kicker", widget: "string" }
+          - { label: "Story — heading", name: "story_heading", widget: "string" }
+          - { label: "Story — paragraph 1", name: "story_body1", widget: "text" }
+          - { label: "Story — paragraph 2", name: "story_body2", widget: "text" }
+          - { label: "Story — paragraph 3", name: "story_body3", widget: "text" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Tagline subtext", name: "tagline_sub", widget: "text" }
+
+  - name: "models"
+    label: "Models"
+    files:
+      - file: "content/hunter.json"
+        label: "Hunter"
+        name: "hunter"
+        fields: &model_fields
+          - { label: "Display name", name: "name", widget: "string" }
+          - { label: "Tag line (short category)", name: "tag", widget: "string" }
+          - { label: "Lede (short intro, used on card + top of page)", name: "lede", widget: "text" }
+          - { label: "Body (About this model)", name: "body", widget: "text" }
+          - { label: "Spec — Range", name: "spec_range", widget: "string" }
+          - { label: "Spec — Top speed", name: "spec_topspeed", widget: "string" }
+          - { label: "Spec — Full charge time", name: "spec_charge", widget: "string" }
+          - { label: "Spec — Weight", name: "spec_weight", widget: "string" }
+          - { label: "Detail page — intro", name: "detail_intro", widget: "text" }
+          - { label: "Detail page — Motor", name: "motor", widget: "text" }
+          - { label: "Detail page — Battery & BMS", name: "battery", widget: "text" }
+          - { label: "Detail page — Controller", name: "controller", widget: "text" }
+          - { label: "Detail page — Charger", name: "charger", widget: "text" }
+      - file: "content/highway.json"
+        label: "Highway"
+        name: "highway"
+        fields: *model_fields
+      - file: "content/zero.json"
+        label: "Zero"
+        name: "zero"
+        fields: *model_fields
+      - file: "content/urban.json"
+        label: "Urban"
+        name: "urban"
+        fields: *model_fields
+      - file: "content/max.json"
+        label: "Max"
+        name: "max"
+        fields: *model_fields
+      - file: "content/classic.json"
+        label: "Classic"
+        name: "classic"
+        fields: *model_fields
+      - file: "content/surf.json"
+        label: "Surf"
+        name: "surf"
+        fields: *model_fields

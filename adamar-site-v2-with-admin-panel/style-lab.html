@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adamar — Style Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+  :root{
+    --lab-bg: #17181A;
+    --lab-panel: #202226;
+    --lab-line: rgba(255,255,255,0.1);
+    --lab-text: #E9E7E1;
+    --lab-dim: #9A9791;
+    --lab-accent: #C9963D;
+
+    /* ---- these are the LIVE site tokens the preview uses ---- */
+    --p-bg: #1B1D1F;
+    --p-accent: #C9963D;
+    --p-accent-bright: #E0AC55;
+    --p-secondary: #3F6B62;
+    --p-text: #ECE8DF;
+    --p-dim: #B9B5AB;
+    --p-font-display: 'Archivo Expanded', sans-serif;
+    --p-font-body: 'Archivo', sans-serif;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--lab-bg);
+    color:var(--lab-text);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    display:grid;
+    grid-template-columns:340px 1fr;
+    min-height:100vh;
+  }
+
+  /* ============ CONTROL PANEL ============ */
+  .panel{
+    background:var(--lab-panel);
+    border-right:1px solid var(--lab-line);
+    padding:28px 24px;
+    overflow-y:auto;
+    max-height:100vh;
+  }
+  .panel h1{
+    font-size:1.1rem;
+    margin:0 0 4px;
+  }
+  .panel > p.sub{
+    font-size:0.85rem;
+    color:var(--lab-dim);
+    margin:0 0 28px;
+  }
+  .group{
+    margin-bottom:28px;
+    padding-bottom:24px;
+    border-bottom:1px solid var(--lab-line);
+  }
+  .group:last-of-type{ border-bottom:none; }
+  .group h2{
+    font-size:0.75rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--lab-accent);
+    margin:0 0 14px;
+  }
+  .field{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+    font-size:0.88rem;
+  }
+  .field label{ color:var(--lab-dim); }
+  .field input[type=color]{
+    width:40px; height:28px;
+    border:1px solid var(--lab-line);
+    border-radius:4px;
+    background:none;
+    padding:0;
+    cursor:pointer;
+  }
+  input[type=text]{
+    width:100%;
+    background:var(--lab-bg);
+    color:var(--lab-text);
+    border:1px solid var(--lab-line);
+    border-radius:4px;
+    padding:9px 10px;
+    font-size:0.88rem;
+  }
+  input[type=text]:focus{ outline:none; border-color:var(--lab-accent); }
+  .quick-fonts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:8px;
+  }
+  .chip{
+    background:none;
+    border:1px solid var(--lab-line);
+    color:var(--lab-dim);
+    font-size:0.76rem;
+    padding:5px 10px;
+    border-radius:20px;
+    cursor:pointer;
+  }
+  .chip:hover{ border-color:var(--lab-accent); color:var(--lab-accent); }
+  select{
+    width:100%;
+    background:var(--lab-bg);
+    color:var(--lab-text);
+    border:1px solid var(--lab-line);
+    border-radius:4px;
+    padding:9px 10px;
+    font-size:0.88rem;
+    margin-bottom:10px;
+    cursor:pointer;
+  }
+  .swatch-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:8px;
+    margin-bottom:6px;
+  }
+  .swatch{
+    border:1px solid var(--lab-line);
+    border-radius:5px;
+    background:var(--lab-bg);
+    padding:6px;
+    cursor:pointer;
+    display:flex;
+    gap:2px;
+    height:30px;
+  }
+  .swatch:hover{ border-color:var(--lab-accent); }
+  .swatch span{ flex:1; border-radius:2px; }
+  .hint{
+    font-size:0.8rem;
+    color:var(--lab-dim);
+    margin:0 0 12px;
+  }
+  .radio-row{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .radio-row label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.88rem;
+    cursor:pointer;
+    padding:8px 10px;
+    border-radius:4px;
+    border:1px solid var(--lab-line);
+  }
+  .radio-row label:has(input:checked){
+    border-color:var(--lab-accent);
+    background:rgba(201,150,61,0.08);
+  }
+  .radio-row input{ accent-color:var(--lab-accent); }
+
+  button.replay{
+    width:100%;
+    padding:10px;
+    background:none;
+    border:1px solid var(--lab-line);
+    color:var(--lab-text);
+    border-radius:4px;
+    cursor:pointer;
+    font-size:0.85rem;
+    margin-top:4px;
+  }
+  button.replay:hover{ border-color:var(--lab-accent); color:var(--lab-accent); }
+
+  .export-box{
+    background:var(--lab-bg);
+    border:1px solid var(--lab-line);
+    border-radius:6px;
+    padding:14px;
+    font-family:'SF Mono',Consolas,monospace;
+    font-size:0.72rem;
+    line-height:1.7;
+    color:var(--lab-dim);
+    white-space:pre-wrap;
+    word-break:break-all;
+    max-height:180px;
+    overflow-y:auto;
+    margin-bottom:10px;
+  }
+  .copy-btn{
+    width:100%;
+    padding:11px;
+    background:var(--lab-accent);
+    border:none;
+    color:#17181A;
+    border-radius:4px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:0.85rem;
+  }
+  .copy-btn:hover{ opacity:0.9; }
+  .copy-note{
+    font-size:0.78rem;
+    color:var(--lab-dim);
+    margin-top:8px;
+    text-align:center;
+    min-height:1.2em;
+  }
+
+  /* ============ PREVIEW ============ */
+  .preview-wrap{
+    position:relative;
+    overflow:hidden;
+    background:var(--p-bg);
+  }
+  .preview-hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+  }
+  .p-media{ position:absolute; inset:0; z-index:0; }
+  .p-video{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 60%;
+    opacity:0.55;
+  }
+  .p-scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, var(--p-bg) 0%, color-mix(in srgb, var(--p-bg) 75%, transparent) 38%, color-mix(in srgb, var(--p-bg) 35%, transparent) 68%, color-mix(in srgb, var(--p-bg) 55%, transparent) 100%),
+      linear-gradient(180deg, color-mix(in srgb, var(--p-bg) 20%, transparent) 0%, color-mix(in srgb, var(--p-bg) 85%, transparent) 92%);
+  }
+  .p-inner{
+    position:relative; z-index:1;
+    max-width:640px;
+    padding:0 56px;
+  }
+  .p-kicker{
+    font-family:var(--p-font-body);
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--p-accent-bright);
+    margin-bottom:18px;
+  }
+  .p-title{
+    font-family:var(--p-font-display);
+    font-weight:700;
+    font-size:clamp(2.6rem, 5vw, 4.2rem);
+    line-height:1.05;
+    color:var(--p-text);
+    margin:0 0 0.5em;
+    letter-spacing:-0.01em;
+  }
+  .p-lede{
+    font-family:var(--p-font-body);
+    font-size:1.1rem;
+    color:var(--p-dim);
+    max-width:46ch;
+    margin:0 0 2em;
+  }
+  .p-actions{ display:flex; gap:16px; }
+  .p-btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:2px;
+    font-family:var(--p-font-body);
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+    cursor:pointer;
+  }
+  .p-btn-primary{ background:var(--p-accent); color:var(--p-bg); border:1px solid var(--p-accent); }
+  .p-btn-ghost{ background:transparent; border:1px solid rgba(236,232,223,0.25); color:var(--p-text); }
+
+  /* model cards strip, to preview secondary color + fonts together */
+  .p-models{
+    position:relative; z-index:1;
+    background:var(--p-bg);
+    padding:64px 56px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background-color:var(--p-bg);
+  }
+  .p-card{
+    background:color-mix(in srgb, var(--p-bg) 92%, white 8%);
+    padding:28px 22px;
+    border:1px solid rgba(236,232,223,0.08);
+  }
+  .p-card h3{
+    font-family:var(--p-font-display);
+    color:var(--p-text);
+    margin:0 0 6px;
+    font-size:1.15rem;
+  }
+  .p-card .tag{
+    font-family:var(--p-font-body);
+    font-size:0.78rem;
+    font-weight:600;
+    color:var(--p-secondary);
+    margin-bottom:8px;
+  }
+  .p-card p{
+    font-family:var(--p-font-body);
+    font-size:0.9rem;
+    color:var(--p-dim);
+    margin:0;
+  }
+
+  /* ============ ANIMATION VARIANTS ============ */
+  /* slide-up (line reveal) */
+  @keyframes slideup-line{ from{ transform:translateY(100%); } to{ transform:translateY(0); } }
+  .anim-slideup .p-title span{ display:block; overflow:hidden; }
+  .anim-slideup .p-title span em{ display:block; font-style:normal; animation:slideup-line 0.65s cubic-bezier(.22,.9,.32,1) forwards; }
+  .anim-slideup .p-title span:nth-child(1) em{ animation-delay:0.1s; }
+  .anim-slideup .p-title span:nth-child(2) em{ animation-delay:0.26s; }
+
+  /* fade */
+  @keyframes fade-up{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:translateY(0);} }
+  .anim-fade .p-title{ animation:fade-up 0.8s ease-out forwards; opacity:0; }
+
+  /* flicker/flash */
+  @keyframes flicker{
+    0%{ opacity:0; }
+    6%{ opacity:1; }
+    9%{ opacity:0.2; }
+    12%{ opacity:1; }
+    16%{ opacity:0.4; }
+    20%{ opacity:1; }
+    100%{ opacity:1; }
+  }
+  .anim-flicker .p-title{ animation:flicker 1s steps(1) forwards; opacity:0; }
+
+  /* typewriter */
+  @keyframes typewriter{ from{ width:0; } to{ width:100%; } }
+  .anim-typewriter .p-title{
+    display:inline-block;
+    white-space:nowrap;
+    overflow:hidden;
+    border-right:3px solid var(--p-accent);
+    animation:typewriter 1.4s steps(24) forwards, blink-caret 0.75s step-end infinite;
+    max-width:100%;
+  }
+  @keyframes blink-caret{ 50%{ border-color:transparent; } }
+
+  /* cascade letters */
+  @keyframes cascade-in{ from{ opacity:0; transform:translateY(0.4em) rotate(3deg); } to{ opacity:1; transform:translateY(0) rotate(0); } }
+  .anim-cascade .p-title .ch{ display:inline-block; opacity:0; animation:cascade-in 0.5s ease-out forwards; }
+
+  /* blur in */
+  @keyframes blur-in{ from{ opacity:0; filter:blur(14px); transform:scale(1.04); } to{ opacity:1; filter:blur(0); transform:scale(1); } }
+  .anim-blur .p-title{ animation:blur-in 0.9s ease-out forwards; opacity:0; }
+
+  /* split / mask wipe */
+  @keyframes mask-wipe{ from{ clip-path:inset(0 100% 0 0); } to{ clip-path:inset(0 0 0 0); } }
+  .anim-mask .p-title{ animation:mask-wipe 0.9s cubic-bezier(.65,0,.35,1) forwards; }
+
+  /* 3D flip in */
+  @keyframes flip3d{
+    from{ opacity:0; transform:perspective(600px) rotateX(70deg) translateY(20px); transform-origin:bottom; }
+    to{ opacity:1; transform:perspective(600px) rotateX(0) translateY(0); }
+  }
+  .anim-flip3d .p-title{ animation:flip3d 0.8s cubic-bezier(.22,.9,.32,1) forwards; opacity:0; }
+
+  /* elastic bounce */
+  @keyframes elastic-bounce{
+    0%{ opacity:0; transform:scale(0.4) translateY(30px); }
+    55%{ opacity:1; transform:scale(1.08) translateY(-6px); }
+    75%{ transform:scale(0.96) translateY(2px); }
+    100%{ transform:scale(1) translateY(0); }
+  }
+  .anim-elastic .p-title{ animation:elastic-bounce 0.85s cubic-bezier(.2,1.4,.4,1) forwards; opacity:0; }
+
+  /* glitch */
+  @keyframes glitch-anim{
+    0%{ opacity:0; transform:translate(0,0); text-shadow:none; }
+    10%{ opacity:1; transform:translate(-3px,1px); text-shadow:2px 0 var(--p-accent),-2px 0 var(--p-secondary); }
+    20%{ transform:translate(3px,-1px); }
+    30%{ transform:translate(-2px,0); text-shadow:-2px 0 var(--p-accent),2px 0 var(--p-secondary); }
+    40%{ transform:translate(2px,1px); }
+    50%{ transform:translate(0,0); text-shadow:none; }
+    100%{ transform:translate(0,0); text-shadow:none; }
+  }
+  .anim-glitch .p-title{ animation:glitch-anim 0.6s steps(2,jump-none) forwards; opacity:0; }
+
+  /* zoom out */
+  @keyframes zoom-out{ from{ opacity:0; transform:scale(1.8); } to{ opacity:1; transform:scale(1); } }
+  .anim-zoom .p-title{ animation:zoom-out 0.7s cubic-bezier(.22,.9,.32,1) forwards; opacity:0; transform-origin:left center; }
+
+  /* letter wave */
+  @keyframes letter-wave{
+    0%{ opacity:0; transform:translateY(0.6em); }
+    60%{ opacity:1; }
+    100%{ opacity:1; transform:translateY(0); }
+  }
+  .anim-wave .p-title .ch{ display:inline-block; opacity:0; animation:letter-wave 0.55s ease-out forwards; }
+
+  /* rotate in (Y-axis) */
+  @keyframes rotate3d-in{
+    from{ opacity:0; transform:perspective(700px) rotateY(-90deg); }
+    to{ opacity:1; transform:perspective(700px) rotateY(0); }
+  }
+  .anim-rotate3d .p-title{ animation:rotate3d-in 0.75s cubic-bezier(.22,.9,.32,1) forwards; opacity:0; transform-origin:left center; }
+
+  /* neon pulse */
+  @keyframes neon-pulse{
+    0%{ opacity:0; }
+    20%{ opacity:1; text-shadow:0 0 6px var(--p-accent-bright),0 0 18px var(--p-accent-bright),0 0 32px var(--p-accent); }
+    60%{ text-shadow:0 0 3px var(--p-accent-bright),0 0 9px var(--p-accent); }
+    100%{ opacity:1; text-shadow:none; }
+  }
+  .anim-neon .p-title{ animation:neon-pulse 1.4s ease-out forwards; opacity:0; }
+
+  /* split color reveal: two-tone sweep using background-clip trick on a duplicate layer */
+  @keyframes splitcolor-sweep{
+    from{ clip-path:inset(0 100% 0 0); }
+    to{ clip-path:inset(0 0 0 0); }
+  }
+  .anim-splitcolor .p-title{ position:relative; color:var(--p-text); }
+  .anim-splitcolor .p-title::after{
+    content:attr(data-text);
+    position:absolute; left:0; top:0;
+    color:var(--p-accent-bright);
+    clip-path:inset(0 100% 0 0);
+    animation:splitcolor-sweep 0.9s cubic-bezier(.65,0,.35,1) forwards;
+    white-space:pre-line;
+  }
+
+  /* ---- card entrance animations ---- */
+  @keyframes card-fadeup{ from{ opacity:0; transform:translateY(24px); } to{ opacity:1; transform:translateY(0); } }
+  @keyframes card-stagger{ from{ opacity:0; transform:translateX(-24px); } to{ opacity:1; transform:translateX(0); } }
+  @keyframes card-scale{ from{ opacity:0; transform:scale(0.85); } to{ opacity:1; transform:scale(1); } }
+
+  .cards-fadeup .p-card{ animation:card-fadeup 0.6s ease-out forwards; opacity:0; }
+  .cards-fadeup .p-card:nth-child(1){ animation-delay:0.05s; }
+  .cards-fadeup .p-card:nth-child(2){ animation-delay:0.15s; }
+  .cards-fadeup .p-card:nth-child(3){ animation-delay:0.25s; }
+
+  .cards-stagger .p-card{ animation:card-stagger 0.55s cubic-bezier(.22,.9,.32,1) forwards; opacity:0; }
+  .cards-stagger .p-card:nth-child(1){ animation-delay:0.05s; }
+  .cards-stagger .p-card:nth-child(2){ animation-delay:0.18s; }
+  .cards-stagger .p-card:nth-child(3){ animation-delay:0.31s; }
+
+  .cards-scale .p-card{ animation:card-scale 0.5s cubic-bezier(.22,.9,.32,1) forwards; opacity:0; }
+  .cards-scale .p-card:nth-child(1){ animation-delay:0.05s; }
+  .cards-scale .p-card:nth-child(2){ animation-delay:0.15s; }
+  .cards-scale .p-card:nth-child(3){ animation-delay:0.25s; }
+
+  @media (max-width: 900px){
+    body{ grid-template-columns:1fr; }
+    .panel{ max-height:none; border-right:none; border-bottom:1px solid var(--lab-line); }
+    .p-models{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ CONTROL PANEL ============ -->
+<div class="panel">
+  <h1>Adamar Style Lab</h1>
+  <p class="sub">Play with colors, fonts and animation. The preview on the right is your real homepage hero and model cards. When you find something you like, copy the settings below and send them to me in chat.</p>
+
+  <div class="group">
+    <h2>Color presets</h2>
+    <div class="swatch-grid" id="swatch-grid">
+      <button class="swatch" data-bg="#1B1D1F" data-accent="#C9963D" data-secondary="#3F6B62" data-text="#ECE8DF" title="Basalt & Brass">
+        <span style="background:#1B1D1F"></span><span style="background:#C9963D"></span><span style="background:#3F6B62"></span>
+      </button>
+      <button class="swatch" data-bg="#0F0F10" data-accent="#D6402E" data-secondary="#7A7A7A" data-text="#F2F0EC" title="Midnight Racer">
+        <span style="background:#0F0F10"></span><span style="background:#D6402E"></span><span style="background:#7A7A7A"></span>
+      </button>
+      <button class="swatch" data-bg="#241C15" data-accent="#E08A34" data-secondary="#8A5A3B" data-text="#F2E9DC" title="Desert Rally">
+        <span style="background:#241C15"></span><span style="background:#E08A34"></span><span style="background:#8A5A3B"></span>
+      </button>
+      <button class="swatch" data-bg="#121815" data-accent="#7FBF8F" data-secondary="#33473D" data-text="#E7EEE8" title="Alpine">
+        <span style="background:#121815"></span><span style="background:#7FBF8F"></span><span style="background:#33473D"></span>
+      </button>
+      <button class="swatch" data-bg="#0A0A0C" data-accent="#C9FF3D" data-secondary="#3A3A3E" data-text="#EDEDED" title="Volt">
+        <span style="background:#0A0A0C"></span><span style="background:#C9FF3D"></span><span style="background:#3A3A3E"></span>
+      </button>
+      <button class="swatch" data-bg="#1A1423" data-accent="#B98BF2" data-secondary="#4E4066" data-text="#EEE8F7" title="Ultraviolet">
+        <span style="background:#1A1423"></span><span style="background:#B98BF2"></span><span style="background:#4E4066"></span>
+      </button>
+      <button class="swatch" data-bg="#F4F1EA" data-accent="#C9963D" data-secondary="#3F6B62" data-text="#1B1D1F" title="Daylight">
+        <span style="background:#F4F1EA"></span><span style="background:#C9963D"></span><span style="background:#3F6B62"></span>
+      </button>
+      <button class="swatch" data-bg="#141B2E" data-accent="#4FA8E0" data-secondary="#5D6B85" data-text="#E8EDF5" title="Steel Blue">
+        <span style="background:#141B2E"></span><span style="background:#4FA8E0"></span><span style="background:#5D6B85"></span>
+      </button>
+    </div>
+
+    <h2 style="margin-top:20px;">Custom colors</h2>
+    <div class="field"><label>Background</label><input type="color" id="c-bg" value="#1B1D1F"></div>
+    <div class="field"><label>Accent</label><input type="color" id="c-accent" value="#C9963D"></div>
+    <div class="field"><label>Secondary</label><input type="color" id="c-secondary" value="#3F6B62"></div>
+    <div class="field"><label>Text</label><input type="color" id="c-text" value="#ECE8DF"></div>
+  </div>
+
+  <div class="group">
+    <h2>Headline font</h2>
+    <p class="hint">Type any font name from Google Fonts — not limited to a list. Try "Playfair Display", "Cinzel", "Bricolage Grotesque", anything.</p>
+    <label style="font-size:0.82rem; color:var(--lab-dim); display:block; margin-bottom:4px;">Headline font</label>
+    <input type="text" id="font-display-input" placeholder="e.g. Bebas Neue" value="Archivo Expanded" list="font-suggestions">
+    <div class="quick-fonts" id="quick-fonts-display"></div>
+
+    <label style="font-size:0.82rem; color:var(--lab-dim); display:block; margin:16px 0 4px;">Body font</label>
+    <input type="text" id="font-body-input" placeholder="e.g. Inter" value="Archivo" list="font-suggestions">
+    <div class="quick-fonts" id="quick-fonts-body"></div>
+
+    <datalist id="font-suggestions">
+      <option value="Bebas Neue"><option value="Anton"><option value="Oswald">
+      <option value="Space Grotesk"><option value="Big Shoulders Display"><option value="Syne">
+      <option value="Staatliches"><option value="Rajdhani"><option value="Orbitron">
+      <option value="Teko"><option value="Unbounded"><option value="Righteous">
+      <option value="Fraunces"><option value="Zilla Slab"><option value="Chivo">
+      <option value="Saira Condensed"><option value="Monoton"><option value="Playfair Display">
+      <option value="Cinzel"><option value="Bricolage Grotesque"><option value="Bodoni Moda">
+      <option value="Poppins"><option value="Montserrat"><option value="Barlow Condensed">
+      <option value="Inter"><option value="IBM Plex Sans"><option value="Work Sans">
+      <option value="Manrope"><option value="Source Sans 3"><option value="Karla">
+      <option value="DM Sans"><option value="Sora"><option value="Rubik">
+    </datalist>
+  </div>
+
+  <div class="group">
+    <h2>Headline animation</h2>
+    <div class="radio-row">
+      <label><input type="radio" name="anim" value="slideup" checked> Slide up (current)</label>
+      <label><input type="radio" name="anim" value="fade"> Fade in</label>
+      <label><input type="radio" name="anim" value="flicker"> Flicker / flash</label>
+      <label><input type="radio" name="anim" value="typewriter"> Typewriter</label>
+      <label><input type="radio" name="anim" value="cascade"> Letter cascade</label>
+      <label><input type="radio" name="anim" value="blur"> Blur in</label>
+      <label><input type="radio" name="anim" value="mask"> Split / mask wipe</label>
+      <label><input type="radio" name="anim" value="flip3d"> 3D flip in</label>
+      <label><input type="radio" name="anim" value="elastic"> Elastic bounce</label>
+      <label><input type="radio" name="anim" value="glitch"> Glitch</label>
+      <label><input type="radio" name="anim" value="zoom"> Zoom out</label>
+      <label><input type="radio" name="anim" value="wave"> Letter wave</label>
+      <label><input type="radio" name="anim" value="rotate3d"> Rotate in</label>
+      <label><input type="radio" name="anim" value="neon"> Neon pulse</label>
+      <label><input type="radio" name="anim" value="splitcolor"> Split-color reveal</label>
+    </div>
+    <button class="replay" id="replay-btn">▶ Replay animation</button>
+  </div>
+
+  <div class="group">
+    <h2>Model card entrance</h2>
+    <p class="hint">How the model cards below animate in. Scroll down slightly, then hit replay.</p>
+    <div class="radio-row">
+      <label><input type="radio" name="cardanim" value="none" checked> None</label>
+      <label><input type="radio" name="cardanim" value="fadeup"> Fade up</label>
+      <label><input type="radio" name="cardanim" value="stagger"> Staggered slide-in</label>
+      <label><input type="radio" name="cardanim" value="scale"> Scale in</label>
+    </div>
+    <button class="replay" id="replay-cards-btn">▶ Replay card animation</button>
+  </div>
+
+  <div class="group">
+    <h2>Your settings</h2>
+    <div class="export-box" id="export-box">— adjust anything above —</div>
+    <button class="copy-btn" id="copy-btn">Copy settings</button>
+    <div class="copy-note" id="copy-note"></div>
+  </div>
+</div>
+
+<!-- ============ LIVE PREVIEW ============ -->
+<div class="preview-wrap">
+  <section class="preview-hero anim-slideup" id="hero">
+    <div class="p-media">
+      <video class="p-video" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+        <source src="assets/hero-loop.mp4" type="video/mp4">
+      </video>
+      <div class="p-scrim"></div>
+    </div>
+    <div class="p-inner">
+      <p class="p-kicker">Electric motorcycles / designed in New Zealand</p>
+      <h1 class="p-title" id="title-el">
+        <span><em>Ride further.</em></span>
+        <span><em>Ride electric.</em></span>
+      </h1>
+      <p class="p-lede">Adamar builds handcrafted electric motorcycles for riders who want real range and real character.</p>
+      <div class="p-actions">
+        <a class="p-btn p-btn-primary" href="#">See the range</a>
+        <a class="p-btn p-btn-ghost" href="#">Book a test ride</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="p-models">
+    <div class="p-card">
+      <h3>Hunter</h3>
+      <p class="tag">Trail &amp; off-road</p>
+      <p>Built for the trail less travelled.</p>
+    </div>
+    <div class="p-card">
+      <h3>Highway</h3>
+      <p class="tag">Long-range touring</p>
+      <p>Engineered for the open road.</p>
+    </div>
+    <div class="p-card">
+      <h3>Urban</h3>
+      <p class="tag">City commuter</p>
+      <p>Nimble in traffic, easy to park.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const root = document.documentElement;
+const hero = document.getElementById('hero');
+const titleEl = document.getElementById('title-el');
+const exportBox = document.getElementById('export-box');
+const loadedFonts = new Set(['Archivo Expanded','Archivo']);
+
+function loadFont(name){
+  if(loadedFonts.has(name)) return;
+  loadedFonts.add(name);
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=' + name.replace(/ /g,'+') + ':wght@400;500;600;700;800&display=swap';
+  document.head.appendChild(link);
+}
+
+// original title text, split for cascade mode
+const originalHTML = titleEl.innerHTML;
+const lines = ['Ride further.', 'Ride electric.'];
+
+function buildCascadeHTML(){
+  return lines.map(line => {
+    const chars = line.split('').map((c,i) =>
+      `<span class="ch" style="animation-delay:${(i*0.025).toFixed(3)}s">${c===' '?'&nbsp;':c}</span>`
+    ).join('');
+    return `<span style="display:block;">${chars}</span>`;
+  }).join('');
+}
+
+const ALL_ANIMS = ['slideup','fade','flicker','typewriter','cascade','blur','mask','flip3d','elastic','glitch','zoom','wave','rotate3d','neon','splitcolor'];
+const ALL_CARD_ANIMS = ['fadeup','stagger','scale'];
+
+function setAnimation(anim){
+  hero.classList.remove(...ALL_ANIMS.map(a => 'anim-' + a));
+  if(anim === 'cascade' || anim === 'wave'){
+    titleEl.innerHTML = buildCascadeHTML();
+  } else {
+    titleEl.innerHTML = originalHTML;
+  }
+  titleEl.setAttribute('data-text', lines.join('\n'));
+  // force reflow to restart animation
+  void hero.offsetWidth;
+  hero.classList.add('anim-' + anim);
+}
+
+const modelsSection = document.querySelector('.p-models');
+function setCardAnimation(anim){
+  modelsSection.classList.remove(...ALL_CARD_ANIMS.map(a => 'cards-' + a));
+  if(anim === 'none') return;
+  void modelsSection.offsetWidth;
+  modelsSection.classList.add('cards-' + anim);
+}
+
+function updateExport(){
+  const bg = document.getElementById('c-bg').value;
+  const accent = document.getElementById('c-accent').value;
+  const secondary = document.getElementById('c-secondary').value;
+  const text = document.getElementById('c-text').value;
+  const fontDisplay = fontDisplayInput.value;
+  const fontBody = fontBodyInput.value;
+  const anim = document.querySelector('input[name="anim"]:checked').value;
+  const cardAnim = document.querySelector('input[name="cardanim"]:checked').value;
+
+  exportBox.textContent =
+`Background:      ${bg}
+Accent:          ${accent}
+Secondary:       ${secondary}
+Text:            ${text}
+Headline font:   ${fontDisplay}
+Body font:       ${fontBody}
+Headline anim:   ${anim}
+Card entrance:   ${cardAnim}`;
+}
+
+document.getElementById('c-bg').addEventListener('input', e => {
+  root.style.setProperty('--p-bg', e.target.value);
+  updateExport();
+});
+document.getElementById('c-accent').addEventListener('input', e => {
+  root.style.setProperty('--p-accent', e.target.value);
+  root.style.setProperty('--p-accent-bright', e.target.value);
+  updateExport();
+});
+document.getElementById('c-secondary').addEventListener('input', e => {
+  root.style.setProperty('--p-secondary', e.target.value);
+  updateExport();
+});
+document.getElementById('c-text').addEventListener('input', e => {
+  root.style.setProperty('--p-text', e.target.value);
+  updateExport();
+});
+function applyFont(kind, name){
+  if(!name || !name.trim()) return;
+  name = name.trim();
+  loadFont(name);
+  root.style.setProperty(`--p-font-${kind}`, `'${name}', sans-serif`);
+  updateExport();
+}
+
+const fontDisplayInput = document.getElementById('font-display-input');
+const fontBodyInput = document.getElementById('font-body-input');
+
+fontDisplayInput.addEventListener('change', () => applyFont('display', fontDisplayInput.value));
+fontBodyInput.addEventListener('change', () => applyFont('body', fontBodyInput.value));
+
+// quick-pick chips for common choices, but the text input above accepts ANY font
+const QUICK_DISPLAY = ['Bebas Neue','Anton','Space Grotesk','Fraunces','Playfair Display','Orbitron'];
+const QUICK_BODY = ['Inter','Work Sans','Manrope','Sora','Karla'];
+
+function buildChips(container, names, input, kind){
+  container.innerHTML = names.map(n => `<button type="button" class="chip" data-name="${n}">${n}</button>`).join('');
+  container.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      input.value = chip.dataset.name;
+      applyFont(kind, chip.dataset.name);
+    });
+  });
+}
+buildChips(document.getElementById('quick-fonts-display'), QUICK_DISPLAY, fontDisplayInput, 'display');
+buildChips(document.getElementById('quick-fonts-body'), QUICK_BODY, fontBodyInput, 'body');
+document.querySelectorAll('input[name="anim"]').forEach(r => {
+  r.addEventListener('change', e => {
+    setAnimation(e.target.value);
+    updateExport();
+  });
+});
+document.getElementById('replay-btn').addEventListener('click', () => {
+  const anim = document.querySelector('input[name="anim"]:checked').value;
+  setAnimation(anim);
+});
+
+document.querySelectorAll('input[name="cardanim"]').forEach(r => {
+  r.addEventListener('change', e => {
+    setCardAnimation(e.target.value);
+    updateExport();
+  });
+});
+document.getElementById('replay-cards-btn').addEventListener('click', () => {
+  const anim = document.querySelector('input[name="cardanim"]:checked').value;
+  setCardAnimation(anim);
+});
+
+document.querySelectorAll('.swatch').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const { bg, accent, secondary, text } = btn.dataset;
+    document.getElementById('c-bg').value = bg;
+    document.getElementById('c-accent').value = accent;
+    document.getElementById('c-secondary').value = secondary;
+    document.getElementById('c-text').value = text;
+    root.style.setProperty('--p-bg', bg);
+    root.style.setProperty('--p-accent', accent);
+    root.style.setProperty('--p-accent-bright', accent);
+    root.style.setProperty('--p-secondary', secondary);
+    root.style.setProperty('--p-text', text);
+    updateExport();
+  });
+});
+document.getElementById('copy-btn').addEventListener('click', () => {
+  navigator.clipboard.writeText(exportBox.textContent).then(() => {
+    document.getElementById('copy-note').textContent = 'Copied — paste it into our chat.';
+    setTimeout(() => document.getElementById('copy-note').textContent = '', 3000);
+  });
+});
+
+updateExport();
+</script>
+</body>
+</html>
