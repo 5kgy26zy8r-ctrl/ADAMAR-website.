@@ -481,6 +481,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   stroke-linecap:round;
   stroke-linejoin:round;
 }
+.model-hero-photo{
+  padding:0;
+  overflow:hidden;
+}
+.model-hero-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 .model-hero-tag{
   font-size:0.85rem;
   font-weight:600;
