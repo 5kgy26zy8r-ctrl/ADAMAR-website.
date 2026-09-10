@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "assets"
-public_folder: "assets"
+media_folder: "adamar-site-v2-with-admin-panel/assets"
+public_folder: "/assets"
 
 publish_mode: simple
 
@@ -11,7 +11,7 @@ collections:
   - name: "homepage"
     label: "Homepage"
     files:
-      - file: "content/home.json"
+      - file: "adamar-site-v2-with-admin-panel/content/home.json"
         label: "Homepage content"
         name: "home"
         fields:
@@ -33,7 +33,7 @@ collections:
   - name: "about_page"
     label: "About Page"
     files:
-      - file: "content/about.json"
+      - file: "adamar-site-v2-with-admin-panel/content/about.json"
         label: "About page content"
         name: "about"
         fields:
@@ -50,7 +50,7 @@ collections:
   - name: "models"
     label: "Models"
     files:
-      - file: "content/hunter.json"
+      - file: "adamar-site-v2-with-admin-panel/content/hunter.json"
         label: "Hunter"
         name: "hunter"
         fields: &model_fields
@@ -67,27 +67,27 @@ collections:
           - { label: "Detail page — Battery & BMS", name: "battery", widget: "text" }
           - { label: "Detail page — Controller", name: "controller", widget: "text" }
           - { label: "Detail page — Charger", name: "charger", widget: "text" }
-      - file: "content/highway.json"
+      - file: "adamar-site-v2-with-admin-panel/content/highway.json"
         label: "Highway"
         name: "highway"
         fields: *model_fields
-      - file: "content/zero.json"
+      - file: "adamar-site-v2-with-admin-panel/content/zero.json"
         label: "Zero"
         name: "zero"
         fields: *model_fields
-      - file: "content/urban.json"
+      - file: "adamar-site-v2-with-admin-panel/content/urban.json"
         label: "Urban"
         name: "urban"
         fields: *model_fields
-      - file: "content/max.json"
+      - file: "adamar-site-v2-with-admin-panel/content/max.json"
         label: "Max"
         name: "max"
         fields: *model_fields
-      - file: "content/classic.json"
+      - file: "adamar-site-v2-with-admin-panel/content/classic.json"
         label: "Classic"
         name: "classic"
         fields: *model_fields
-      - file: "content/surf.json"
+      - file: "adamar-site-v2-with-admin-panel/content/surf.json"
         label: "Surf"
         name: "surf"
         fields: *model_fields
