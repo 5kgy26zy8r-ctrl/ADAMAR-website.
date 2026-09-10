@@ -80,3 +80,103 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     if (!wasOpen) item.classList.add('open');
   });
 });
+
+// ============================================
+// HEADER — shrinks slightly after scrolling down
+// ============================================
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader) {
+  const onScroll = () => {
+    if (window.scrollY > 40) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// ============================================
+// BUTTONS — ripple effect on click
+// ============================================
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    if (prefersReducedMotion) return;
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    const size = Math.max(rect.width, rect.height) * 1.4;
+    ripple.className = 'btn-ripple';
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 650);
+  });
+});
+
+// ============================================
+// MODEL CARDS — subtle 3D tilt following the cursor
+// ============================================
+if (!prefersReducedMotion) {
+  document.querySelectorAll('.model-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      const tiltX = (-y * 6).toFixed(2);
+      const tiltY = (x * 6).toFixed(2);
+      card.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-2px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+// ============================================
+// SPEC NUMBERS — count up from 0 when scrolled into view
+// ============================================
+const specEls = document.querySelectorAll('.spec-value');
+if (specEls.length) {
+  const animateCount = (el) => {
+    const text = el.textContent.trim();
+    const match = text.match(/^([\d.]+)(.*)$/);
+    if (!match) return; // not a numeric spec (e.g. "Brushless"), leave as-is
+    const target = parseFloat(match[1]);
+    const suffix = match[2];
+    const isDecimal = match[1].includes('.');
+    const duration = 900;
+    const start = performance.now();
+
+    if (prefersReducedMotion) {
+      el.classList.add('counted');
+      return;
+    }
+
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+      el.textContent = (isDecimal ? current.toFixed(1) : Math.round(current)) + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = text; // lock to exact original value
+        el.classList.add('counted');
+      }
+    }
+    requestAnimationFrame(tick);
+  };
+
+  const specObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        specObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  specEls.forEach(el => specObserver.observe(el));
+}
