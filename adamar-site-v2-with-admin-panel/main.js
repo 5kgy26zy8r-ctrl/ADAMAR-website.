@@ -39,7 +39,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // into place the first time it enters the viewport. Respects users who
 // have reduced motion turned on.
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const revealTargets = document.querySelectorAll('.scroll-reveal');
+const revealTargets = document.querySelectorAll('.scroll-reveal, .scroll-reveal-stagger');
 
 if (revealTargets.length) {
   if (prefersReducedMotion) {
