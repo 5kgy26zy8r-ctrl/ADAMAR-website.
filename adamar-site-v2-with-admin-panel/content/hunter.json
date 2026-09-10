@@ -4,7 +4,7 @@
   "battery": "A lithium battery is a lightweight, efficient rechargeable energy source built for electric vehicles. The Battery Management System (BMS) monitors voltage, current, and temperature for safe operation, preventing overcharging and thermal issues, which enhances performance and lifespan.",
   "motor": "High-performance electric motor delivering instant torque and smooth acceleration. Compact, efficient, and brushless for low maintenance and maximum efficiency — durable and lightweight, built for high torque and long-range performance.",
   "spec_topspeed": "160 km/h",
-  "spec_charge": "6.5 hrs",
+  "spec_charge": "15 minute. ",
   "spec_range": "120 km",
   "tag": "Trail & off-road",
   "lede": "A unique design fusing cutting-edge aesthetics with innovative engineering, for an instantly recognisable, commanding stance.",
