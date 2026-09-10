@@ -481,16 +481,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   stroke-linecap:round;
   stroke-linejoin:round;
 }
-.model-hero-photo{
-  padding:0;
-  overflow:hidden;
-}
-.model-hero-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
 .model-hero-tag{
   font-size:0.85rem;
   font-weight:600;
@@ -793,3 +783,76 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   color:var(--off-white-dim);
   max-width:none;
 }
+
+/* ============================================
+   PAGE TRANSITIONS (smooth fade between pages,
+   supported browsers only — safe no-op elsewhere)
+   ============================================ */
+@view-transition {
+  navigation: auto;
+}
+@keyframes page-fade-in{ from{ opacity:0; } to{ opacity:1; } }
+@keyframes page-fade-out{ from{ opacity:1; } to{ opacity:0; } }
+::view-transition-old(root){ animation: page-fade-out 0.25s ease-out forwards; }
+::view-transition-new(root){ animation: page-fade-in 0.35s ease-in forwards; }
+
+/* ============================================
+   HEADER — shrinks slightly on scroll
+   ============================================ */
+.site-header{ transition: padding 0.25s ease, background-color 0.25s ease; }
+.site-header.scrolled .header-inner{ height:58px; }
+.header-inner{ transition: height 0.25s ease; }
+
+/* ============================================
+   BUTTONS — ripple + underline draw
+   ============================================ */
+.btn{ position:relative; overflow:hidden; }
+.btn-ripple{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,0.45);
+  transform:scale(0);
+  animation:btn-ripple-anim 0.6s ease-out forwards;
+  pointer-events:none;
+}
+@keyframes btn-ripple-anim{
+  to{ transform:scale(2.6); opacity:0; }
+}
+.btn-ghost{ position:relative; }
+.btn-ghost::after{
+  content:'';
+  position:absolute;
+  left:14px; right:14px; bottom:8px;
+  height:1px;
+  background:var(--brass-bright);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 0.3s ease;
+}
+.btn-ghost:hover::after{ transform:scaleX(1); }
+
+/* ============================================
+   MODEL CARDS — tilt + icon zoom on hover
+   ============================================ */
+.model-card{
+  transition: transform 0.25s ease, background-color 0.2s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.model-card .model-mark{
+  transition: transform 0.35s cubic-bezier(.22,.9,.32,1);
+}
+.model-card:hover .model-mark{
+  transform: scale(1.15) rotate(-4deg);
+}
+
+/* ============================================
+   SPEC NUMBERS — handled via JS count-up,
+   just a subtle pop once animated
+   ============================================ */
+@keyframes spec-pop{
+  0%{ transform:scale(0.9); opacity:0.4; }
+  60%{ transform:scale(1.04); opacity:1; }
+  100%{ transform:scale(1); opacity:1; }
+}
+.spec-value.counted{ animation: spec-pop 0.4s ease-out; }
